@@ -37,9 +37,12 @@ public class Player : MonoBehaviour
     void Move(float h, float v)
     {
         Vector3 vec = (new Vector3(h, 0, v).normalized * _mSpeed) / Time.fixedDeltaTime;
-        _rigid.velocity = vec;
-        Look(vec);
-        _anim.SetFloat("velocity", vec.magnitude);
+
+        Vector3 isoVec = Quaternion.AngleAxis(-45, Vector3.up) * vec;
+        
+        _rigid.velocity = isoVec;
+        Look(isoVec);
+        _anim.SetFloat("velocity", isoVec.magnitude);
     }
     void Look(Vector3 vec)
     {
