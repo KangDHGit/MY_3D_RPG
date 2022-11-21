@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player I;
     public Rigidbody _rigid;
     public Animator _anim;
     public float _mSpeed;
@@ -11,23 +12,21 @@ public class Player : MonoBehaviour
     float _h;
     float _v;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        I = this;
+    }
+
     void Start()
     {
         _rigid = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void FixedUpdate()
     {
         _h = Input.GetAxis("Horizontal");
         _v = Input.GetAxis("Vertical");
-        //Move(_h, _v);
     }
 
     public void OnAnimatorMove()
