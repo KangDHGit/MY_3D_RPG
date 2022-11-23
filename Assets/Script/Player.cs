@@ -46,16 +46,18 @@ public class Player : MonoBehaviour
     #region Move
     public void OnAnimatorMove()
     {
-        Move(_h, _v);
+        if(Time.deltaTime > 0)
+            Move(_h, _v);
     }
     void Move(float h, float v)
     {
         Vector3 vec = (new Vector3(h, 0, v).normalized * _mSpeed) / Time.fixedDeltaTime;
 
         Vector3 isoVec = Quaternion.AngleAxis(-45, Vector3.up) * vec;
-        
-        _rigid.velocity = isoVec;
         Look(isoVec);
+
+        isoVec.y = _rigid.velocity.y;
+        _rigid.velocity = isoVec;
         _anim.SetFloat("velocity", isoVec.magnitude);
     }
     void Look(Vector3 vec)
