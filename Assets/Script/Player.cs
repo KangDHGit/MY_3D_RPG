@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     float _h;
     float _v;
 
+    bool _isGround = true;
+
     private void Awake()
     {
         I = this;
@@ -34,13 +36,24 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Jump();
+        if (_isGround && Input.GetKeyDown(KeyCode.Space)) Jump();
     }
 
     private void FixedUpdate()
     {
         _h = Input.GetAxis("Horizontal");
         _v = Input.GetAxis("Vertical");
+#if UNITY_EDITOR
+        // helper to visualise the ground check ray in the scene view
+        Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.11f));
+#endif
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.11f))
+        {
+            _isGround = true;
+        }
+        else
+            _isGround = false;
     }
 
     #region Move
