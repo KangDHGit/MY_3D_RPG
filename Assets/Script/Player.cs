@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     Rigidbody _rigid;
     Animator _anim;
     Collider _atk_Col;
+    Weapon _weapon;
 
     public float _mSpeed;
     public float _rSpeed;
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
         if (!TryGetComponent(out _rigid)) Debug.LogError(this.gameObject.name + " _rigid is Null");
         if (!TryGetComponent(out _anim)) Debug.LogError(this.gameObject.name + " _anim is Null");
         if (!transform.Find("arm_R_weapon/warrior_handsword").TryGetComponent(out _atk_Col)) Debug.LogError(this.gameObject.name + " _atk_Col is Null");
+        _weapon = transform.Find("arm_R_weapon").GetComponentInChildren<Weapon>();
+        if (_weapon == null) Debug.LogError("_weapon is Null");
     }
 
     private void Update()
@@ -108,5 +111,13 @@ public class Player : MonoBehaviour
     {
         bool result = stat == 1 ? true : false;
         _anim.SetBool("isAttack", result);
+    }
+
+    public void NormalAttack()
+    {
+        if(_weapon != null)
+        {
+
+        }
     }
 }
