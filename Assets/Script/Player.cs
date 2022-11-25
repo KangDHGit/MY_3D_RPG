@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_isGround && Input.GetKeyDown(KeyCode.Space)) Jump();
+        if (_isGround && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            _rigid.velocity = Vector3.zero;
+            _anim.SetFloat("velocity", 0.0f);
+            _anim.SetTrigger("attack");
+        }
     }
 
     private void FixedUpdate()
@@ -51,15 +57,19 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.11f))
         {
             _isGround = true;
+            _anim.SetBool("jump", false);
         }
         else
+        {
             _isGround = false;
+            _anim.SetBool("jump", true);
+        }
     }
 
     #region Move
     public void OnAnimatorMove()
     {
-        if(Time.deltaTime > 0)
+        if(Time.deltaTime > 0 && !_anim.GetBool("isAttack"))
             Move(_h, _v);
     }
     void Move(float h, float v)
@@ -83,8 +93,8 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (_anim.GetBool("isAttack") || _anim.GetBool("isjump")) return;
-        Debug.Log("Jump");  
+        if (_anim.GetBool("isAttack")) return;
+
         Vector3 force = new Vector3(0, _jump_Force);
         _rigid.AddForce(force);
     }
@@ -96,7 +106,7 @@ public class Player : MonoBehaviour
 
     public void SetisAttack(int stat)
     {
-        bool result  = stat == 1 ? true : false;
+        bool result = stat == 1 ? true : false;
         _anim.SetBool("isAttack", result);
     }
 }
