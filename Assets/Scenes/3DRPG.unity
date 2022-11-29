@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b36a3cb8d801647b6b60ec0e58570c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObstacleRenderer: {fileID: 0}
 --- !u!4 &1023093569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b16c15bb8a80b7e41805da7d1e3f46ad, type: 3}
@@ -775,8 +776,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7139e22332a3f9f40b110d4bf335021a, type: 3}
   m_PrefabInstance: {fileID: 2127871314}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1215553263
-MeshCollider:
+--- !u!65 &1215553266
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -785,10 +786,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8133827245588576782, guid: 7139e22332a3f9f40b110d4bf335021a, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 5.5, y: 5.4373693, z: 6.5}
+  m_Center: {x: 0, y: 2.7106485, z: 1.662519}
 --- !u!1001 &1229390641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 72137b852b100dc44bc01aadb9f66330, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a627f3f336e21074d8f3b82a122c0f92, type: 2}
+      objectReference: {fileID: 2100000, guid: 71e07311a6fa2dc46bdce02fb34cc54b, type: 2}
     - target: {fileID: 919132149155446097, guid: 72137b852b100dc44bc01aadb9f66330, type: 3}
       propertyPath: m_Name
       value: _SMITHY
@@ -1401,7 +1401,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7139e22332a3f9f40b110d4bf335021a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b6d6e54cbdcf1a24ebaec6d58b0a3b2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 9bf115723eb4e734d83b19c716c7da56, type: 2}
     - target: {fileID: 919132149155446097, guid: 7139e22332a3f9f40b110d4bf335021a, type: 3}
       propertyPath: m_Name
       value: _weaving_work
