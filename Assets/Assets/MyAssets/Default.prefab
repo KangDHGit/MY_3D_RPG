@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564434947498410668}
   - component: {fileID: 1564434947485114910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1564434947498358864}
   - component: {fileID: 1564434947489295460}
   - component: {fileID: 6540069891442365553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564434947498331498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564434947498409772}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: arm_L_weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564434947498332192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564434947498350298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: arm_R_weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9177774037477955706}
   - component: {fileID: 7898323479068350454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NpcArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -50,12 +50,9 @@ public class Player : MonoBehaviour
             _anim.SetTrigger("attack");
         }
         if (Input.GetKeyDown(KeyCode.V) && _scanObject != null)
-            GameManager.I.Action(_scanObject);
-        RaycastHit fRayHit;
-        Debug.DrawRay(_rigid.position, transform.forward * 3.0f, Color.red);
-        if (Physics.Raycast(_rigid.position, transform.forward, out fRayHit, 1.0f))
         {
-            Debug.Log(fRayHit.transform.name);
+            Debug.Log(_scanObject.name);
+            GameManager.I.Action(_scanObject);
         }
     }
 
@@ -79,12 +76,15 @@ public class Player : MonoBehaviour
             _anim.SetBool("jump", true);
         }
 
-        //RaycastHit fRayHit;
-        //Debug.DrawRay(_rigid.position, transform.forward * 3.0f, Color.red);
-        //if (Physics.Raycast(_rigid.position, transform.forward, out fRayHit, 3.0f))
-        //{
-        //    Debug.Log(fRayHit.transform.name);
-        //}
+        RaycastHit fRayHit;
+        Debug.DrawRay(_rigid.position, transform.forward * 3.0f, Color.red);
+        if (Physics.Raycast(_rigid.position, transform.forward, out fRayHit, 3.0f, LayerMask.GetMask("Object")))
+        {
+            //Debug.Log(fRayHit.transform.name);
+            _scanObject = fRayHit.transform.gameObject;
+        }
+        else
+            _scanObject = null;
 
     }
 
