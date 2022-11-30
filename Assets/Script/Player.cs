@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
 
     bool _isGround = true;
 
+    GameObject _scanObject;
+    Vector3 isoVec;
+
     private void Awake()
     {
         I = this;
@@ -40,11 +43,19 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_isGround && Input.GetKeyDown(KeyCode.Space)) Jump();
-        if (_isGround && Input.GetKeyDown(KeyCode.Mouse0))
+        if (_isGround && Input.GetKeyDown(KeyCode.X))
         {
             _rigid.velocity = Vector3.zero;
             _anim.SetFloat("velocity", 0.0f);
             _anim.SetTrigger("attack");
+        }
+        if (Input.GetKeyDown(KeyCode.V) && _scanObject != null)
+            GameManager.I.Action(_scanObject);
+        RaycastHit fRayHit;
+        Debug.DrawRay(_rigid.position, transform.forward * 3.0f, Color.red);
+        if (Physics.Raycast(_rigid.position, transform.forward, out fRayHit, 1.0f))
+        {
+            Debug.Log(fRayHit.transform.name);
         }
     }
 
@@ -56,8 +67,8 @@ public class Player : MonoBehaviour
         // helper to visualise the ground check ray in the scene view
         Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.11f));
 #endif
-        RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.11f))
+        RaycastHit gRayHit;
+        if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out gRayHit, 0.11f))
         {
             _isGround = true;
             _anim.SetBool("jump", false);
@@ -67,6 +78,14 @@ public class Player : MonoBehaviour
             _isGround = false;
             _anim.SetBool("jump", true);
         }
+
+        //RaycastHit fRayHit;
+        //Debug.DrawRay(_rigid.position, transform.forward * 3.0f, Color.red);
+        //if (Physics.Raycast(_rigid.position, transform.forward, out fRayHit, 3.0f))
+        //{
+        //    Debug.Log(fRayHit.transform.name);
+        //}
+
     }
 
     #region Move
@@ -79,7 +98,7 @@ public class Player : MonoBehaviour
     {
         Vector3 vec = (new Vector3(h, 0, v).normalized * _mSpeed) / Time.fixedDeltaTime;
 
-        Vector3 isoVec = Quaternion.AngleAxis(-45, Vector3.up) * vec;
+        isoVec = Quaternion.AngleAxis(-45, Vector3.up) * vec;
         Look(isoVec);
 
         isoVec.y = _rigid.velocity.y;
